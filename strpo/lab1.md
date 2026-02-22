@@ -142,3 +142,22 @@ git branch
 * lab1-strpo
   main
 ```
+
+Далее закоммитил:
+```bash
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git add .
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git commit -m "(strpo): change report v2"
+[lab1-strpo 822fc47] (strpo): change report v2
+ 1 file changed, 37 insertions(+)
+ ```
+
+При checkout на main всех этих файлов нет.
+
+После изменения в README и попытке переключиться на main (означает, что изменения нужно либо закоммитить, либо сохранить в stash):
+```bash
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git checkout main
+error: Your local changes to the following files would be overwritten by checkout:
+        README.md
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
