@@ -266,3 +266,26 @@ Fast-forward
  strpo/lab1.md | 89 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----------
  1 file changed, 78 insertions(+), 11 deletions(-)
 ```
+
+Далее сделал `git log` (просто показывает действия над репозиторием):
+```bash
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git log
+commit ae1e2bb20bc939f6c94c2d258bb1ea8974ecb0b7 (HEAD -> lab1-strpo, origin/lab1-strpo)
+Author: AndreyFrekostya <orbita1872@gmail.com>
+Date:   Sun Feb 22 20:51:00 2026 +0300
+
+    (strpo):change report v6
+
+commit 7d7af5c9512bc6874b2b1ec1aafb16174dcf458e
+Author: Andrey Mikhailenko <av_mihailenko@dba.ooo>
+Date:   Sun Feb 22 20:47:06 2026 +0300
+
+    (strpo): change report v5
+
+commit 1ca031728fd1d11af894fb61e0100705c5c50507
+Merge: 10e9727 2682311
+Author: AndreyFrekostya <orbita1872@gmail.com>
+Date:   Sun Feb 22 20:36:48 2026 +0300
+
+:...
+```
