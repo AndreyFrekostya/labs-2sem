@@ -105,3 +105,40 @@ index df0eba6..bc6ebec 100644
 +вфывфывфывфывфыввфывфывфы
 \ No newline at end of file
 ```
+
+Сделал коммит только файла отчета:
+```bash
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git add strpo/lab1.md
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git commit -m "(strpo): change report"
+[lab1-strpo 68e5c2b] (strpo): change report
+ 1 file changed, 107 insertions(+)
+```
+
+### Откат изменений
+Откатил изменения только в README: `git restore README.md`. Изменения пропали.
+
+После удаления файла отчета (означает что просто файл удален):
+```bash
+git status
+On branch lab1-strpo
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    strpo/lab1.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Далее востановил файл с помощью git restore.
+
+
+### Ветвление версий
+
+Я изначально начал работу в новой ветке от main с помощью git checkout -b "lab1-strpo".
+Сейчас `git branch` показывает:
+```bash
+git branch
+  lab1 (note: ветка для лабы по структурам данных)
+* lab1-strpo
+  main
+```
