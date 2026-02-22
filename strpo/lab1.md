@@ -161,3 +161,24 @@ error: Your local changes to the following files would be overwritten by checkou
 Please commit your changes or stash them before you switch branches.
 Aborting
 ```
+
+Далее я смержил:
+```bash
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git merge lab1-strpo
+Updating f975b96..5b661f4
+Fast-forward
+ strpo/lab1.md | 163 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 163 insertions(+)
+ create mode 100644 strpo/lab1.md
+ ```
+
+Изменил README и закоммитил:
+```bash
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git add .
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git commit -m "(strpo): commit again report of lab1 to main"
+[main 2682311] (strpo): commit again report of lab1 to main
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
