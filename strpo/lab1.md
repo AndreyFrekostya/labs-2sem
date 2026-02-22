@@ -249,3 +249,20 @@ Resolving deltas: 100% (13/13), done.
 ```
 
 И затем добавил протоколы и запушил.
+
+Далее вернулся в первый локальный репозиторий и сделал `git fetch` (загружает изменения, но не сливает их) и `git pull` (обновляет локальную ветку.):
+```bash
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git  fetch
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 4 (delta 1), reused 4 (delta 1), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 1.47 KiB | 18.00 KiB/s, done.
+From https://github.com/AndreyFrekostya/labs-2sem
+   1ca0317..7d7af5c  lab1-strpo -> origin/lab1-strpo
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git pull
+Updating 1ca0317..7d7af5c
+Fast-forward
+ strpo/lab1.md | 89 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 78 insertions(+), 11 deletions(-)
+```
