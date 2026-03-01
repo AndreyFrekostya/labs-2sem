@@ -46,3 +46,7 @@ To https://github.com/AndreyFrekostya/labs-2sem.git
  ! [remote rejected] main -> main (protected branch hook declined)
 error: failed to push some refs to 'https://github.com/AndreyFrekostya/labs-2sem.git'
 ```
+
+Cоздал ветку pr-test и влил ее в main. Коммит слияния: `3150994`.
+
+Далее сделал pull в локальном репозитории:
