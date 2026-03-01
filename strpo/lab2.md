@@ -47,6 +47,26 @@ To https://github.com/AndreyFrekostya/labs-2sem.git
 error: failed to push some refs to 'https://github.com/AndreyFrekostya/labs-2sem.git'
 ```
 
+
+### Запросы на слияние
+
 Cоздал ветку pr-test и влил ее в main. Коммит слияния: `3150994`.
 
 Далее сделал pull в локальном репозитории:
+```bash
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git pull origin
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (1/1), 934 bytes | 34.00 KiB/s, done.
+From https://github.com/AndreyFrekostya/labs-2sem
+   4136aad..3150994  main       -> origin/main
+Updating 4136aad..3150994
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+ ```
+
+### Code Review
+
+Все действия в данном блоке были выполнены до выполнения этой работы. На данный момент есть pull request с лабараторной работой №1 по программированию
