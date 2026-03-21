@@ -1,65 +1,49 @@
-# -------------------- Директории и цели --------------------
-SRC_DIR = src
-BUILD_DIR = build
-TEST_DIR = tests
+object = build/barrel.o build/matrix.o build/mystring.o build/rect.o build/textwrapper.o
 
-DEBUG_TARGET = $(BUILD_DIR)/debug.out
-LEAKS_TARGET = $(BUILD_DIR)/leaks.out
+build/barrel.o: src/barrel/barrel.cpp src/barrel/barrel.hpp
+	g++ -c -o build/barrel.o src/barrel/barrel.cpp
 
-# -------------------- Исходники --------------------
-SRCS := $(wildcard $(SRC_DIR)/**/*.cpp) $(wildcard $(SRC_DIR)/*.cpp)
+build/matrix.o: src/matrix/matrix.cpp src/matrix/matrix.hpp
+	g++ -c -o build/matrix.o src/matrix/matrix.cpp
 
-# -------------------- Объекты --------------------
-OBJECTS := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
+build/mystring.o: src/mystring/mystring.cpp src/mystring/mystring.hpp
+	g++ -c -o build/mystring.o src/mystring/mystring.cpp
 
-# -------------------- Создание папки build --------------------
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+build/rect.o: src/rect/rect.cpp src/rect/rect.hpp
+	g++ -c -o build/rect.o src/rect/rect.cpp
 
-# -------------------- Команда компиляции .cpp в .o --------------------
-BUILD_COMMAND = g++ -g -c -o $@ $<
+build/textwrapper.o: src/textwrapper/textwrapper.cpp src/textwrapper/textwrapper.hpp src/mystring/mystring.hpp
+	g++ -c -o build/textwrapper.o src/textwrapper/textwrapper.cpp
 
-# -------------------- Частичная сборка объектов --------------------
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	mkdir -p $(dir $@)
-	$(BUILD_COMMAND)
+build/test_bounding_rect.out: tests/test_bounding_rect.cpp build/rect.o
+	g++ -g -o build/test_bounding_rect.out tests/test_bounding_rect.cpp build/rect.o
 
-# -------------------- Полная debug сборка --------------------
-$(DEBUG_TARGET): $(OBJECTS)
-	g++ -g -o $@ $(OBJECTS)
+build/test_rect_basic_methods.out: tests/test_rect_basic_methods.cpp build/rect.o
+	g++ -g -o build/test_rect_basic_methods.out tests/test_rect_basic_methods.cpp build/rect.o
 
-debug: $(DEBUG_TARGET)
-	gdb $(DEBUG_TARGET)
+build/test_rect_operations.out: tests/test_rect_operations.cpp build/rect.o
+	g++ -g -o build/test_rect_operations.out tests/test_rect_operations.cpp build/rect.o
 
-# -------------------- Leak сборка --------------------
-$(LEAKS_TARGET): $(OBJECTS)
-	g++ -g -fsanitize=address -o $@ $(OBJECTS)
+build/test_rect_properties.out: tests/test_rect_properties.cpp build/rect.o
+	g++ -g -o build/test_rect_properties.out tests/test_rect_properties.cpp build/rect.o
 
-leaks: $(LEAKS_TARGET)
-	./$(LEAKS_TARGET)
+test: build/test_bounding_rect.out build/test_rect_basic_methods.out build/test_rect_operations.out build/test_rect_properties.out
+	./build/test_bounding_rect.out
+	./build/test_rect_basic_methods.out
+	./build/test_rect_operations.out
+	./build/test_rect_properties.out
 
-# -------------------- Очистка --------------------
+debug: build/debug.out
+	gdb build/debug.out
+
+build/debug.out: $(object) src/main.cpp
+	g++ -g -o build/debug.out $(object) src/main.cpp
+
+build/leaks.out: $(object) src/main.cpp
+	g++ -g -fsanitize=address -o build/leaks.out $(object) src/main.cpp
+
+leaks: build/leaks.out
+	./build/leaks.out
+
 clean:
-	rm -rf $(BUILD_DIR)/*
-
-# ==================== ТЕСТЫ ====================
-TEST_SRC := $(wildcard $(TEST_DIR)/**/*.cpp) $(wildcard $(TEST_DIR)/*.cpp)
-PROJECT_OBJECTS_FOR_TESTS := $(filter-out $(BUILD_DIR)/main.o, $(OBJECTS))
-TEST_NAMES := $(patsubst $(TEST_DIR)/%.cpp,%,$(TEST_SRC))
-
-
-$(BUILD_DIR)/$(TEST_DIR):
-	mkdir -p $(BUILD_DIR)/$(TEST_DIR)
-
-$(BUILD_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.cpp | $(BUILD_DIR)/$(TEST_DIR)
-	mkdir -p $(dir $@)
-	$(BUILD_COMMAND)
-
-$(BUILD_DIR)/$(TEST_DIR)/%.out: $(BUILD_DIR)/$(TEST_DIR)/%.o $(PROJECT_OBJECTS_FOR_TESTS)
-	g++ -g -o $@ $^
-
-$(TEST_NAMES): % : $(BUILD_DIR)/$(TEST_DIR)/%.out
-	./$<
-
-test: $(TEST_NAMES)
-	@echo "Все тесты пройдены!"
+	rm -rf build build/*

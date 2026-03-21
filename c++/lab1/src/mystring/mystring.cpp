@@ -20,13 +20,9 @@ MyString::MyString(const char* str) {
 }
 
 MyString::MyString(const MyString& other) {
-    length = other.length;
-    if (other.data) {
-        data = new char[length + 1];
-        strcpy(data, other.data);
-    } else {
-        data = nullptr;
-    }
+    data = nullptr;
+    length = 0;
+    *this = other;
 }
 
 MyString::~MyString() {

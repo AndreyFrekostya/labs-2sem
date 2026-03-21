@@ -5,8 +5,7 @@ private:
 
 public:
     Rect();
-    // Rect(int left, int top, int right, int bottom);
-    Rect(int x, int y, int width, int height);
+    Rect(int left, int top, int right, int bottom);
     Rect(const Rect& other);
 
     int get_left() const;
@@ -14,8 +13,7 @@ public:
     int get_right() const;
     int get_bottom() const;
 
-    // void set_all(int left, int right, int top, int bottom);
-    void set_all(int x, int y, int width, int height);
+    void set_all(int left, int right, int top, int bottom);
 
     void inflate(int amount);                              
     void inflate(int dw, int dh);                          
