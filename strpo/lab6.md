@@ -154,3 +154,6 @@ To ../labs-2sem
 2. Собрать `cmake --build build`
 3. Запустить основную программу `./build/main_app`
 4. Запустить все тесты `ctest --test-dir build`
+
+
+
