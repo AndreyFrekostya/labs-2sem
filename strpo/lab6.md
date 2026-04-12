@@ -116,5 +116,4 @@ Switched to a new branch 'lab6-strpo'
 PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git push server lab6-strpo           
 Everything up-to-date
 ```
-
 Далее запушил изменения на server:
