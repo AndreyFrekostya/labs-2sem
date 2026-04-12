@@ -117,3 +117,4 @@ PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs
 Everything up-to-date
 ```
 
+Далее запушил изменения на server:
