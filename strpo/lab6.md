@@ -78,21 +78,12 @@ ERROR: неверный формат commit message
 
 Я скопировал репозиторий и добавил remote:
 ```
-PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git remote add server ..\labs-2sem   
-PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git remote -v  
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git remote add server ..\labs-2sem   
+andrey@andrew:/mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all$ git remote -v  
 origin  https://github.com/AndreyFrekostya/labs-2sem.git (fetch)
 origin  https://github.com/AndreyFrekostya/labs-2sem.git (push)
 server  ..\labs-2sem (fetch)
 server  ..\labs-2sem (push)
-```
-
-Далее добился что можно пушить:
-```
-PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git switch -c lab6-strpo origin/lab6-strpo
-branch 'lab6-strpo' set up to track 'origin/lab6-strpo'.
-Switched to a new branch 'lab6-strpo'
-PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git push server lab6-strpo           
-Everything up-to-date
 ```
 
 Создал hook post-receive (конвертирует через Pandoc):
@@ -111,3 +102,18 @@ do
   fi
 done
 ```
+
+Ввел в клоне комманду, которая говорит, что если в checkout ветку пришел пуш, то ее нужно обновить:
+```
+git config receive.denyCurrentBranch updateInstead
+```
+
+Далее добился что можно пушить:
+```
+PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git switch -c lab6-strpo origin/lab6-strpo
+branch 'lab6-strpo' set up to track 'origin/lab6-strpo'.
+Switched to a new branch 'lab6-strpo'
+PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git push server lab6-strpo           
+Everything up-to-date
+```
+
