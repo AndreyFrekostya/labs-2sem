@@ -212,7 +212,7 @@ exit 0
 
 Теперь при коммите:
 ```
-git commit -m "(feat: strpo): push to dev for tests 2"
+ git commit -m "(feat: strpo): push to dev for tests 4"
 -- Configuring done (0.0s)
 -- Generating done (0.7s)
 -- Build files have been written to: /mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all/c++/lab1/build
@@ -231,11 +231,57 @@ Test project /mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/а
     Start 3: test_rect_operations
 3/4 Test #3: test_rect_operations .............   Passed    0.00 sec
     Start 4: test_rect_properties
-4/4 Test #4: test_rect_properties .............   Passed    0.01 sec
+4/4 Test #4: test_rect_properties .............   Passed    0.00 sec
 
 100% tests passed, 0 tests failed out of 4
 
-Total Test time (real) =   0.07 sec
-[dev b3d39f4] (feat: strpo): push to dev for tests 2
- 1 file changed, 3 insertions(+)
+Total Test time (real) =   0.06 sec
+-- Configuring done (0.0s)
+-- Generating done (0.6s)
+-- Build files have been written to: /mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/all/c++/lab1/build
+[100%] Built target lab1_library
+Бибилотеки успешно собраны.
+[dev 148be8a] (feat: strpo): push to dev for tests 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+### Автоматизация с помощью Github Actions
+
+**YAML** — это формат записи данных. В нём используются:
+- ключ: значение
+- списки через -
+- вложенность через отступы
+
+**GitHub Actions позволяет:**
+- автоматически запускать workflow по push, pull_request и другим событиям
+- собирать проект
+- запускать тесты
+- выполнять команды на GitHub runner’ах
+
+Создал файл `.github/workflows/cmake-ci.yml` и описал:
+```
+name: CMake CI
+
+on:
+  push:
+    branches: [ "dev", "main" ]
+  pull_request:
+    branches: [ "dev", "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: cmake -S . -B build
+
+      - name: Build project
+        run: cmake --build build
+
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure
 ```
