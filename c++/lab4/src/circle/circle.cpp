@@ -11,6 +11,10 @@ Circle::Circle(const Point& c, double r) : center(c), radius(r) {}
 
 Circle::~Circle() = default;
 
+bool Circle::operator==(const Circle& other) const {
+    return center == other.center && radius == other.radius;
+}
+
 const Point& Circle::get_center() const { return center; }
 
 double Circle::get_radius() const { return radius; }

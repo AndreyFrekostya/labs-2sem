@@ -8,6 +8,10 @@ Point::Point(double _x, double _y): x(_x), y(_y) {};
 
 Point::~Point() = default;
 
+bool Point::operator==(const Point& other) const {
+    return x == other.x && y == other.y;
+}
+
 double Point::get_x() const { return x; }
 double Point::get_y() const { return y; }
 

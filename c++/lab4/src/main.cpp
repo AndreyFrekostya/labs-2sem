@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "./point/point.hpp"
 #include "./circle/circle.hpp"
 #include "./list/list.hpp"
@@ -58,6 +59,28 @@ int main() {
     l2.read_from_file("./public/circles.txt");
     cout << "\nСписок, прочитанный из файла:" << endl;
     l2.print();
+    cout << endl;
+
+    cout << "Итератор:" << endl;
+    for (List::Iterator it = l.begin(); it != l.end(); ++it) {
+        (*it).print();
+    }
+    cout << endl;
+
+    std::ofstream fout("./public/circles.txt");
+    if (fout) {
+        l.write_to(fout);
+        fout.close();
+    }
+
+    ifstream fin("./public/circles.txt");
+    if (fin) {
+        l.read_from(fin);
+        fin.close();
+        l.print();
+        cout << endl;
+    }
+  
 
 
 	return 0;

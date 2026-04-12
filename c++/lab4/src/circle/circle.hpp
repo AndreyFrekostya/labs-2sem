@@ -14,6 +14,8 @@ public:
 
     ~Circle();
 
+    bool operator==(const Circle& other) const;
+
     const Point& get_center() const;
     
     double get_radius() const;

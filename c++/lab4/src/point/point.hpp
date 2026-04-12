@@ -9,6 +9,8 @@ public:
     Point(double x, double y);
     ~Point();
 
+    bool operator==(const Point& other) const;
+
     double get_x() const;
     double get_y() const;
 
