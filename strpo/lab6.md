@@ -115,12 +115,42 @@ Enumerating objects: 7, done.
 Counting objects: 100% (7/7), done.
 Delta compression using up to 16 threads
 Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 367 bytes | 40.00 KiB/s, done.
+Writing objects: 100% (4/4), 758 bytes | 94.00 KiB/s, done.
 Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
-remote: Push received for branch lab6-strpo
-remote: Generating HTML from Markdown...
-remote: pandoc: /mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/labs-2sem/.git/strpo/lab6.md: withBinaryFile: does not exist (No such file or directory)
-remote: Done: /mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/labs-2sem/.git/strpo/lab6.html updated
+remote: [WARNING] This document format requires a nonempty <title> element.
+remote:   Defaulting to 'lab6' as the title.
+remote:   To specify a title, use 'title' in metadata or --metadata title="...".
 To ../labs-2sem
-   767e1ec..4181071  lab6-strpo -> lab6-strpo
+   4181071..a7caea6  lab6-strpo -> lab6-strpo
 ```
+
+.html создался:
+![alt text](./images/lab6/image.png)
+
+### Сборка с помощью CMake
+
+Основные понятия cmake:
+
+- **project** — проект
+- **target** — цель сборки
+- **library** — библиотека
+- **executable** — исполняемый файл
+
+Основные конструкции cmake:
+
+- **project(...)** — объявляет проект  
+- **add_executable(...)** — создаёт исполняемый файл  
+- **add_library(...)** — создаёт библиотеку  
+- **target_link_libraries(...)** — подключает библиотеку к другой цели  
+- **target_include_directories(...)** — задаёт пути к заголовочным файлам  
+- **add_subdirectory(...)** — подключает поддиректорию с другим CMakeLists.txt
+- **enable_testing()** — включает поддержку тестов  
+- **add_test(...)** — добавляет тест для ctest
+
+Далее написал два CMakeLists.txt
+
+Как запускать:
+1. Сконфигурировать проект `cmake -S . -B build`
+2. Собрать `cmake --build build`
+3. Запустить основную программу `./build/main_app`
+4. Запустить все тесты `ctest --test-dir build`
