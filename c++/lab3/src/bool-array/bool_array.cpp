@@ -16,9 +16,6 @@ BoolArray::Reference::operator bool() const {
     return array->getBit(index);
 }
 
-bool BoolArray::Reference::operator!() const {
-    return !array->getBit(index);
-}
 
 // ------------------------------------
 
@@ -43,7 +40,7 @@ bool BoolArray::getBit(int index) const {
 
 BoolArray::BoolArray(int n, bool value)
     : size(n), bytes(bytesForBits(n)) {
-    data = (bytes > 0) ? new unsigned char[bytes] : 0;
+    data = new unsigned char[bytes];
 
     for (int i = 0; i < bytes; ++i)
         data[i] = value ? 0xFF : 0x00;

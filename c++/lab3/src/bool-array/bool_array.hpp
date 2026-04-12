@@ -20,7 +20,6 @@ public:
         Reference& operator=(bool value);
         Reference& operator=(const Reference& other);
         operator bool() const;
-        bool operator!() const;
     };
 
     BoolArray(int n = 0, bool value = false);
