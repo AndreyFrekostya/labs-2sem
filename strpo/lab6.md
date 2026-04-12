@@ -199,7 +199,7 @@ if [ "$branch" = "dev" ]; then
     exit 1
   }
 
-  cmake --build build --target ds_lib || {
+  cmake --build build --target lab1_library || {
     echo "ERROR: Сборка библиотек упала"
     exit 1
   }
