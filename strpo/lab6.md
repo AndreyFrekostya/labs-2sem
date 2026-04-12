@@ -56,7 +56,7 @@ echo "$msg" | grep -Eq '^\((feat|fix|docs|test|refactor|chore): (stro|c\+\+)\): 
   echo "Используйте формат: (type: project): description"
   echo "Примеры:"
   echo "  (feat: c++): ..."
-  echo "  (fix: stro): ..."
+  echo "  (fix: strpo): ..."
   exit 1
 }
 
@@ -70,7 +70,7 @@ ERROR: неверный формат commit message
 Используйте формат: (type: project): description
 Примеры:
   (feat: c++): ...
-  (fix: stro): ...
+  (fix: strpo): ...
 ```
 
 
