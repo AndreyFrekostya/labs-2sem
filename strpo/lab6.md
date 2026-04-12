@@ -92,8 +92,8 @@ server  ..\labs-2sem (push)
 
 TARGET_BRANCH="refs/heads/lab6-strpo"
 PROJECT_DIR="$(cd ../.. && pwd)"
-MD_FILE="$PROJECT_DIR/strpo/lab6.md"
-HTML_FILE="$PROJECT_DIR/strpo/lab6.html"
+MD_FILE="$PROJECT_DIR/labs-2sem/strpo/lab6.md"
+HTML_FILE="$PROJECT_DIR/labs-2sem/strpo/lab6.html"
 
 while read oldrev newrev refname
 do
@@ -108,12 +108,19 @@ done
 git config receive.denyCurrentBranch updateInstead
 ```
 
-Далее добился что можно пушить:
-```
-PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git switch -c lab6-strpo origin/lab6-strpo
-branch 'lab6-strpo' set up to track 'origin/lab6-strpo'.
-Switched to a new branch 'lab6-strpo'
-PS C:\Users\orbit\OneDrive\Рабочий стол\1\учеба\аип\2sem\labs-2sem> git push server lab6-strpo           
-Everything up-to-date
-```
 Далее запушил изменения на server:
+```
+git push server lab6-strpo
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 367 bytes | 40.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Push received for branch lab6-strpo
+remote: Generating HTML from Markdown...
+remote: pandoc: /mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/labs-2sem/.git/strpo/lab6.md: withBinaryFile: does not exist (No such file or directory)
+remote: Done: /mnt/c/Users/orbit/OneDrive/Рабочий стол/1/учеба/аип/2sem/labs-2sem/.git/strpo/lab6.html updated
+To ../labs-2sem
+   767e1ec..4181071  lab6-strpo -> lab6-strpo
+```
